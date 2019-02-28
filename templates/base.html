@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{title}}</title>
+            
+    </head>
+        <body class="">
+        <div >
+            {% if 'username' in session %}
+            Logged in as {{ session['username'] }}
+            {% endif %}
+        </div>
+        <h3><table width="500">
+            <tr>
+                <td>
+                    <a href="/"> Home </a>
+                </td>
+                <td>
+                    <a href="/blog">Main Blog Page</a>
+                </td>
+                <td>
+                    <a href="newpost">Add a Blog Entry</a>
+                </td>
+                <td>
+                    <a href="login">Login</a>
+                </td>
+                <td>
+                    <a href="/logout">Logout</a></li>
+                </td>
+            </tr>
+        </table></h3>
+
+        {% with messages=get_flashed_messages(with_categories=True) %}
+        <ul>
+            {% for category, message in messages %}
+            <li class="{{category}}">{{message}}</li>
+            {% endfor %}
+        </ul>
+        {% endwith %}
+
+            {% block content %}
+            {% endblock %}
+
+
+    
+    </body>
+</html>
+

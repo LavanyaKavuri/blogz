@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if users|length == 0 %}
+    <p>No tasks yet</p>
+    {% else %}
+
+        {% for user in users %}
+            {% for blog in user.blogs %}
+<table>
+    <tr style="">
+        <td style="border:5px">
+        <a href="blog?id={{blog.id}}"><h2 align="left">{{blog.title}}</h2></a>
+        {{blog.body}}
+            <p> Written by <a href="blog?user={{user.username}}">{{user.username}}</a></p>
+
+        </td>
+    </tr>
+</table>
+            {% endfor %}
+        {% endfor %}
+
+
+    {% endif %}
+{% endblock %}
